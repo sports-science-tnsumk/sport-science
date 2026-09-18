@@ -70,7 +70,6 @@
 'use strict';
 // กำหนด URL ของ Web App ที่ได้จากการ Deploy บน Google Apps Script ของคุณ
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzUDm4TFujKziqRp5ttPY83rzqf2e2yop8BneQndhjPj4E0vicK3uQD9OsL98Nix4Wj/exec";
-
 var state = { public: null, settings: {}, heroIndex: 0, heroTimer: null, calendarDate: new Date(), admin: { token: null, user: null, module: null, rows: [], page: 1, pageSize: 10, search: '', status: 'all' }, chart: null };
 var MODULES = {
     news: { title: 'ข่าวประชาสัมพันธ์', icon: 'fa-newspaper', get: 'getAdminModule', save: 'saveNews', del: 'deleteNews', folder: 'News', fields: [['title', 'หัวข้อข่าว', 'text', true], ['category', 'หมวดหมู่', 'text'], ['summary', 'รายละเอียดย่อ', 'textarea'], ['content', 'เนื้อหาเต็ม', 'rich'], ['coverImage', 'รูปปก (URL)', 'upload'], ['fileUrl', 'เอกสารแนบ (URL)', 'text'], ['author', 'ผู้เขียน', 'text'], ['publishDate', 'วันที่เผยแพร่', 'date'], ['pinned', 'ปักหมุด', 'checkbox'], ['status', 'สถานะ', 'status']] },
