@@ -2,43 +2,983 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sports science WEB</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="เว็บไซต์คณะวิทยาศาสตร์การกีฬา มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตมหาสารคาม">
+  <meta name="keywords" content="คณะวิทยาศาสตร์การกีฬา,วิทยาเขตมหาสารคาม,มกช,กีฬา,อุดมศึกษา,TNSU,sport science">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="เว็บไซต์คณะวิทยาศาสตร์การกีฬา มกช. มหาสารคาม">
+  <meta property="og:description" content="เว็บไซต์อย่างเป็นทางการ คณะวิทยาศาสตร์การกีฬา มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตมหาสารคาม">
+  <title>เว็บไซต์คณะวิทยาศาสตร์การกีฬา</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #f4f6f9;
-    }
-    .iframe-container {
-      width: 100%;
-      height: 100vh;
-      border: none;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
+    :root{--primary:#2563eb;--secondary:#0f172a;--accent:#f59e0b;--bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--danger:#dc2626;--success:#16a34a;--shadow:0 10px 30px rgba(15,23,42,.08);--radius:18px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}body.dark{--bg:#0b1220;--surface:#111827;--surface2:#172033;--text:#e5edf9;--muted:#94a3b8;--border:#263244;--shadow:0 10px 30px rgba(0,0,0,.25)}
+    a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.container{width:min(1180px,calc(100% - 32px));margin:auto}.muted{color:var(--muted)}.hidden{display:none!important}.grid{display:grid;gap:20px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.section{padding:64px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px}.section-title{margin:0;font-size:clamp(1.5rem,3vw,2.2rem)}.eyebrow{font-size:.85rem;color:var(--primary);font-weight:800;letter-spacing:.08em;text-transform:uppercase}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.card-body{padding:18px}.btn{border:0;border-radius:12px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}.btn-primary{background:var(--primary);color:white}.btn-light{background:var(--surface2);color:var(--text)}.btn-danger{background:#fee2e2;color:#b91c1c}.btn-success{background:#dcfce7;color:#166534}.btn-sm{padding:7px 10px;border-radius:9px;font-size:.88rem}.badge{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:var(--surface2);font-size:.78rem;font-weight:700}.badge.active,.badge.published{background:#dcfce7;color:#166534}.badge.inactive,.badge.draft{background:#f1f5f9;color:#475569}.empty{padding:38px;text-align:center;color:var(--muted)}.empty i{font-size:2rem;margin-bottom:10px;display:block}.spinner{width:24px;height:24px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .topbar{background:var(--secondary);color:white;font-size:.86rem}.topbar-inner{min-height:38px;display:flex;justify-content:space-between;align-items:center;gap:16px}.socials{display:flex;gap:10px}.site-header{background:var(--surface);border-bottom:1px solid var(--border)}.header-inner{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:14px;min-width:0}.brand-logo{width:62px;height:62px;border-radius:16px;object-fit:contain;background:var(--surface2)}.brand-text h1{font-size:1.35rem;margin:0}.brand-text p{margin:3px 0 0;color:var(--muted);font-size:.9rem}.header-actions{display:flex;gap:8px}.nav-wrap{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30}.nav{display:flex;align-items:center;justify-content:center;gap:4px;min-height:56px}.nav a{padding:10px 12px;border-radius:10px;font-weight:600;font-size:.94rem}.nav a:hover{background:var(--surface2);color:var(--primary)}.hamburger{display:none}
+    .hero{position:relative;min-height:480px;background:linear-gradient(135deg,var(--secondary),var(--primary));overflow:hidden}.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;background-size:cover;background-position:center}.hero-slide.active{opacity:1}.hero-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,6,23,.82),rgba(2,6,23,.22))}.hero-content{position:relative;z-index:2;height:480px;display:flex;align-items:center}.hero-copy{max-width:680px;color:white}.hero-copy h2{font-size:clamp(2rem,5vw,4rem);line-height:1.12;margin:10px 0}.hero-copy p{font-size:1.08rem;color:#e2e8f0;max-width:620px}.hero-controls{position:absolute;z-index:3;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px}.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);border:0;cursor:pointer}.hero-dot.active{width:28px;border-radius:999px;background:white}.hero-arrow{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.2);color:white;cursor:pointer}.hero-arrow.prev{left:18px}.hero-arrow.next{right:18px}
+    .notice-strip{background:var(--accent);color:#111827}.notice-inner{min-height:48px;display:flex;align-items:center;gap:10px;font-weight:700}.welcome-card{display:grid;grid-template-columns:1.05fr 1fr;min-height:360px}.welcome-image{min-height:360px;background:var(--surface2);object-fit:cover;width:100%;height:100%}.welcome-copy{padding:34px}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.stat-card{padding:22px;display:flex;align-items:center;gap:14px}.stat-icon{width:48px;height:48px;border-radius:14px;background:color-mix(in srgb,var(--primary) 13%,transparent);color:var(--primary);display:grid;place-items:center;font-size:1.3rem}.stat-value{font-size:1.8rem;font-weight:800}.media-card img{height:190px;width:100%;object-fit:cover;background:var(--surface2)}.media-card h3{font-size:1.05rem;margin:8px 0}.meta{display:flex;gap:12px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}.staff-card{text-align:center;padding:20px}.staff-card img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 14px;background:var(--surface2)}.link-card{padding:16px;display:flex;align-items:center;gap:12px}.link-card img{width:44px;height:44px;object-fit:contain}.doc-row{padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--border)}.doc-row:last-child{border-bottom:0}.footer{background:#0b1220;color:#fff;padding:48px 0 24px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+.footer h3{margin:0 0 10px;font-size:1.2rem;color:#fff;font-weight:800;line-height:1.5}
+.footer b{color:#fff;font-weight:800;line-height:1.5}
+.footer small{display:block;color:#f1f5f9;font-size:.95rem;line-height:1.75}
+.footer #footerContact{color:#f1f5f9!important;font-size:.95rem;line-height:1.8}
+.footer #footerContact p{margin:0 0 6px;color:#f1f5f9}
+.footer #footerContact i{width:20px;color:#93c5fd}
+.visitor-box{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.visitor-box div{padding:10px;border-radius:10px;background:rgba(255,255,255,.12);text-align:center;color:#fff;font-size:.9rem;line-height:1.5}
+.footer .footer-copyright{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);color:#e2e8f0;font-size:.9rem;line-height:1.7}
+    .float-stack{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:25}.float-btn{width:46px;height:46px;border-radius:50%;border:0;box-shadow:var(--shadow);display:grid;place-items:center;cursor:pointer;background:var(--surface);color:var(--primary)}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.66);z-index:90;display:flex;align-items:center;justify-content:center;padding:18px}.modal{background:var(--surface);border-radius:20px;width:min(760px,100%);max-height:90vh;overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}.modal-lg{width:min(980px,100%)}.modal-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--surface);z-index:2}.modal-body{padding:22px}.close{border:0;background:var(--surface2);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.88rem;font-weight:700}.input,.select,.textarea{width:100%;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:11px;padding:10px 12px;font:inherit;outline:none}.input:focus,.select:focus,.textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 14%,transparent)}.textarea{min-height:110px;resize:vertical}.editor-toolbar{display:flex;gap:6px;flex-wrap:wrap;padding:8px;background:var(--surface2);border:1px solid var(--border);border-bottom:0;border-radius:11px 11px 0 0}.editor{min-height:180px;border:1px solid var(--border);border-radius:0 0 11px 11px;padding:12px;outline:none;background:var(--surface)}
+    .admin-shell{position:fixed;inset:0;background:var(--bg);z-index:70;display:grid;grid-template-columns:260px 1fr;grid-template-rows:64px 1fr;grid-template-areas:'side top' 'side main'}.admin-side{grid-area:side;background:#0f172a;color:white;padding:18px 12px;overflow:auto}.admin-top{grid-area:top;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px}.admin-main{grid-area:main;overflow:auto;padding:22px}.admin-brand{display:flex;align-items:center;gap:10px;padding:8px 10px 18px;font-weight:800}.admin-menu{display:flex;flex-direction:column;gap:4px}.admin-menu button{border:0;background:transparent;color:#cbd5e1;text-align:left;padding:11px 12px;border-radius:10px;font:inherit;cursor:pointer;display:flex;gap:10px;align-items:center}.admin-menu button:hover,.admin-menu button.active{background:rgba(255,255,255,.10);color:white}.admin-table-wrap{overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:16px}.admin-table{width:100%;border-collapse:collapse;min-width:800px}.admin-table th,.admin-table td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:left;font-size:.9rem;vertical-align:top}.admin-table th{background:var(--surface2);position:sticky;top:0}.admin-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;flex-wrap:wrap}.searchbox{display:flex;gap:8px;flex:1;min-width:260px}.pagination{display:flex;gap:6px;justify-content:center;margin-top:14px}.metric-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}.metric{padding:18px}.metric b{font-size:1.7rem;display:block;margin-top:6px}.chart-card{padding:18px;margin-top:18px}.mobile-admin-toggle{display:none}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.calendar-head,.calendar-day{padding:10px;border:1px solid var(--border);border-radius:9px;min-height:72px}.calendar-head{min-height:auto;background:var(--surface2);text-align:center;font-weight:700}.calendar-day .num{font-weight:800}.calendar-event{font-size:.72rem;margin-top:5px;padding:3px 5px;border-radius:6px;background:color-mix(in srgb,var(--primary) 14%,transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+    @media(max-width:980px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(2,1fr)}.welcome-card{grid-template-columns:1fr}.welcome-image{min-height:280px}.stats-grid{grid-template-columns:repeat(2,1fr)}.metric-grid{grid-template-columns:repeat(3,1fr)}.admin-shell{grid-template-columns:1fr;grid-template-areas:'top' 'main';grid-template-rows:64px 1fr}.admin-side{position:fixed;top:0;bottom:0;left:0;width:270px;z-index:75;transform:translateX(-105%);transition:.25s}.admin-side.open{transform:translateX(0)}.mobile-admin-toggle{display:inline-flex}}
+    @media(max-width:760px){.container{width:min(100% - 22px,1180px)}.section{padding:46px 0}.topbar{display:none}.brand-logo{width:50px;height:50px}.brand-text h1{font-size:1.05rem}.brand-text p{font-size:.78rem}.header-inner{min-height:76px}.header-actions .btn-primary{display:none}.hamburger{display:inline-flex}.nav{position:absolute;top:56px;left:0;right:0;background:var(--surface);display:none;flex-direction:column;align-items:stretch;padding:10px 12px;border-bottom:1px solid var(--border)}.nav.open{display:flex}.nav a{width:100%}.hero,.hero-content{height:420px;min-height:420px}.hero-arrow{display:none}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.metric-grid{grid-template-columns:1fr 1fr}.admin-main{padding:14px}.section-head{align-items:start;flex-direction:column}.calendar-grid{gap:3px}.calendar-head,.calendar-day{padding:6px;min-height:56px}.calendar-event{font-size:.62rem}.modal-backdrop{padding:8px;align-items:flex-end}.modal{max-height:94vh;border-radius:18px 18px 0 0}.welcome-copy{padding:22px}.doc-row{align-items:flex-start;flex-direction:column}}
+    @media(max-width:420px){.stats-grid,.metric-grid{grid-template-columns:1fr}.header-actions .theme-toggle{display:none}.hero-copy h2{font-size:2rem}.visitor-box{grid-template-columns:1fr 1fr}.footer small,.footer #footerContact{font-size:.94rem}.footer{padding-top:40px}}
   </style>
 </head>
 <body>
-
-  <div class="iframe-container">
-    <!-- นำ URL ของ Web App (ที่ลงท้ายด้วย /exec) มาใส่ใน src -->
-    <iframe 
-      src="https://script.google.com/macros/s/AKfycbxgueKtOFiZUM6jOLWL0p9HhYFimCTdR2mxNJSPUl_qeKbzbRlJDFZmDRxJYGH0XJh4mA/exec" 
-      title="เว็บคณะวิทยาศาสตร์การกีฬา มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตมหาสารคาม"
-      allowfullscreen>
-    </iframe>
+  <div id="publicApp">
+    <div class="topbar"><div class="container topbar-inner"><div id="topContact">ยินดีต้อนรับสู่เว็บไซต์คณะวิทยาศาสตร์การกีฬา</div><div class="socials" id="topSocial"></div></div></div>
+    <header class="site-header"><div class="container header-inner"><a class="brand" href="#home"><img class="brand-logo" id="brandLogo" alt="โลโก้คณะ"><div class="brand-text"><h1 id="schoolName">ระบบเว็บไซต์คณะวิทยาศาสตร์การกีฬา</h1><p id="schoolSub">Faculty Website</p></div></a><div class="header-actions"><button class="btn btn-light theme-toggle" onclick="toggleTheme()" aria-label="สลับธีม"><i class="fa-solid fa-circle-half-stroke"></i></button><button class="btn btn-primary" onclick="openLogin()"><i class="fa-solid fa-user-shield"></i> ผู้ดูแลระบบ</button><button class="btn btn-light hamburger" onclick="toggleNav()"><i class="fa-solid fa-bars"></i></button></div></div></header>
+    <div class="nav-wrap"><nav class="container nav" id="mainNav"><a href="#home">หน้าแรก</a><a href="#about">เกี่ยวกับคณะฯ</a><a href="#staff">คณาจารย์และบุคลากร</a><a href="#news">ข่าวประชาสัมพันธ์</a><a href="#activities">กิจกรรม</a><a href="#awards">ผลงาน/รางวัล</a><a href="#documents">ดาวน์โหลด</a><a href="#contact">ติดต่อเรา</a></nav></div>
+    <main id="home">
+      <section class="hero" id="hero"><div class="container hero-content"><div class="hero-copy"><span class="eyebrow" style="color:#fde68a">WELCOME TO OUR FACULTY</span><h2 id="heroFallbackTitle">พื้นที่แห่งการเรียนรู้และการเติบโตด้านวิทยาศาสตร์การกีฬา</h2><p id="heroFallbackText">ข่าวสาร กิจกรรม และข้อมูลสำคัญของคณะวิทยาศาสตร์การกีฬาในที่เดียว</p></div></div><button class="hero-arrow prev" onclick="heroPrev()"><i class="fa-solid fa-chevron-left"></i></button><button class="hero-arrow next" onclick="heroNext()"><i class="fa-solid fa-chevron-right"></i></button><div class="hero-controls" id="heroDots"></div></section>
+      <div class="notice-strip"><div class="container notice-inner"><i class="fa-solid fa-bullhorn"></i><span id="noticeText">ติดตามข่าวสารและกิจกรรมล่าสุดของคณะวิทยาศาสตร์การกีฬาได้ที่นี่</span></div></div>
+      <section class="section" id="about"><div class="container"><div class="section-head"><div><div class="eyebrow">ABOUT FACULTY</div><h2 class="section-title">ยินดีต้อนรับสู่คณะวิทยาศาสตร์การกีฬา</h2></div><button class="btn btn-light" onclick="openSchoolProfile()">ข้อมูลเพิ่มเติม</button></div><div class="card welcome-card"><img id="schoolImage" class="welcome-image" alt="ภาพคณะวิทยาศาสตร์การกีฬา"><div class="welcome-copy"><h2 id="welcomeName">คณะวิทยาศาสตร์การกีฬา</h2><p id="welcomeHistory" class="muted">ข้อมูลจะแสดงหลังจากตั้งค่าระบบ</p><div class="grid grid-2" style="margin-top:20px"><div><b>ปรัชญา</b><p id="philosophy" class="muted">-</p></div><div><b>วิสัยทัศน์</b><p id="vision" class="muted">-</p></div><div><b>พันธกิจ</b><p id="mission" class="muted">-</p></div><div><b>อัตลักษณ์</b><p id="identity" class="muted">-</p></div></div></div></div></div></section>
+      <section class="section" style="background:var(--surface2)"><div class="container"><div class="stats-grid" id="schoolStats"></div></div></section>
+      <section class="section" id="news"><div class="container"><div class="section-head"><div><div class="eyebrow">LATEST NEWS</div><h2 class="section-title">ข่าวประชาสัมพันธ์</h2></div><button class="btn btn-light" onclick="openNewsArchive()">ดูข่าวทั้งหมด</button></div><div class="grid grid-4" id="newsGrid"><div class="empty card">กำลังโหลด...</div></div></div></section>
+      <section class="section" id="activities" style="background:var(--surface2)"><div class="container"><div class="section-head"><div><div class="eyebrow">FACULTY LIFE</div><h2 class="section-title">กิจกรรมคณะฯ</h2></div></div><div class="grid grid-3" id="activityGrid"></div></div></section>
+      <section class="section" id="staff"><div class="container"><div class="section-head"><div><div class="eyebrow">OUR FACULTY MEMBERS</div><h2 class="section-title">คณะผู้บริหารและคณาจารย์</h2></div></div><div class="grid grid-4" id="staffGrid"></div></div></section>
+      <section class="section" id="awards" style="background:var(--surface2)"><div class="container"><div class="section-head"><div><div class="eyebrow">ACHIEVEMENT</div><h2 class="section-title">ผลงานและรางวัล</h2></div><button class="btn btn-light" onclick="openAwardArchive()">ดูทั้งหมด</button></div><div class="grid grid-4" id="awardGrid"></div></div></section>
+      <section class="section" id="calendar"><div class="container"><div class="section-head"><div><div class="eyebrow">CALENDAR</div><h2 class="section-title">ปฏิทินกิจกรรม</h2></div><div><button class="btn btn-light btn-sm" onclick="changeCalendarMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button> <button class="btn btn-light btn-sm" onclick="changeCalendarMonth(1)"><i class="fa-solid fa-chevron-right"></i></button></div></div><div class="card card-body"><h3 id="calendarTitle" style="margin-top:0"></h3><div class="calendar-grid" id="calendarGrid"></div></div></div></section>
+      <section class="section" id="documents" style="background:var(--surface2)"><div class="container"><div class="section-head"><div><div class="eyebrow">DOWNLOAD</div><h2 class="section-title">ดาวน์โหลดเอกสาร</h2></div></div><div class="card" id="documentList"></div></div></section>
+      <section class="section" id="links"><div class="container"><div class="section-head"><div><div class="eyebrow">QUICK LINKS</div><h2 class="section-title">ลิงก์ที่เกี่ยวข้อง</h2></div></div><div class="grid grid-4" id="linkGrid"></div></div></section>
+      <section class="section" id="contact" style="background:var(--surface2)"><div class="container"><div class="grid grid-2"><div><div class="eyebrow">CONTACT</div><h2 class="section-title">ติดต่อคณะวิทยาศาสตร์การกีฬา</h2><div id="contactInfo" class="muted" style="margin-top:16px"></div></div><div class="card" style="min-height:300px;overflow:hidden" id="mapBox"><div class="empty"><i class="fa-solid fa-map-location-dot"></i>ยังไม่ได้ตั้งค่า Google Maps</div></div></div></div></section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div><h3 id="footerSchool">คณะวิทยาศาสตร์การกีฬา</h3><small id="footerText">เว็บไซต์ประชาสัมพันธ์ คณะวิทยาศาสตร์การกีฬา มกช. มหาสารคาม</small></div><div><b>ช่องทางติดต่อ</b><div id="footerContact" style="margin-top:10px;color:#cbd5e1"></div></div><div><b>สถิติผู้เข้าชม</b><div class="visitor-box" id="visitorBox" style="margin-top:10px"></div></div></div><div class="footer-copyright">© <span id="copyYear"></span> <span id="copySchool">คณะวิทยาศาสตร์การกีฬา</span> สงวนลิขสิทธิ์</div></div></footer>
+    <div class="float-stack" id="floatStack"><button class="float-btn" id="backTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="กลับด้านบน"><i class="fa-solid fa-arrow-up"></i></button></div>
   </div>
 
+  <div id="modalRoot"></div>
+  <div id="adminRoot"></div>
+
+  <script>
+'use strict';
+// กำหนด URL ของ Web App ที่ได้จากการ Deploy บน Google Apps Script ของคุณ
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxgueKtOFiZUM6jOLWL0p9HhYFimCTdR2mxNJSPUl_qeKbzbRlJDFZmDRxJYGH0XJh4mA/exec";
+
+var state = { public: null, settings: {}, heroIndex: 0, heroTimer: null, calendarDate: new Date(), admin: { token: null, user: null, module: null, rows: [], page: 1, pageSize: 10, search: '', status: 'all' }, chart: null };
+var MODULES = {
+    news: { title: 'ข่าวประชาสัมพันธ์', icon: 'fa-newspaper', get: 'getAdminModule', save: 'saveNews', del: 'deleteNews', folder: 'News', fields: [['title', 'หัวข้อข่าว', 'text', true], ['category', 'หมวดหมู่', 'text'], ['summary', 'รายละเอียดย่อ', 'textarea'], ['content', 'เนื้อหาเต็ม', 'rich'], ['coverImage', 'รูปปก (URL)', 'upload'], ['fileUrl', 'เอกสารแนบ (URL)', 'text'], ['author', 'ผู้เขียน', 'text'], ['publishDate', 'วันที่เผยแพร่', 'date'], ['pinned', 'ปักหมุด', 'checkbox'], ['status', 'สถานะ', 'status']] },
+    activities: { title: 'กิจกรรม', icon: 'fa-images', get: 'getAdminModule', save: 'saveActivity', del: 'deleteActivity', folder: 'Activities', fields: [['title', 'ชื่อกิจกรรม', 'text', true], ['date', 'วันที่', 'date'], ['location', 'สถานที่', 'text'], ['description', 'รายละเอียด', 'textarea'], ['coverImage', 'รูปปก (URL)', 'upload'], ['status', 'สถานะ', 'status']] },
+    banners: { title: 'Banner', icon: 'fa-panorama', get: 'getAdminModule', save: 'saveBanner', del: 'deleteBanner', folder: 'Banner', fields: [['title', 'หัวข้อ', 'text', true], ['description', 'รายละเอียด', 'textarea'], ['image', 'รูป Banner (URL)', 'upload'], ['url', 'ลิงก์', 'text'], ['buttonText', 'ข้อความปุ่ม', 'text'], ['startDate', 'วันที่เริ่ม', 'date'], ['endDate', 'วันที่สิ้นสุด', 'date'], ['order', 'ลำดับ', 'number'], ['status', 'สถานะ', 'status']] },
+    staff: { title: 'คณาจารย์และบุคลากร', icon: 'fa-people-group', get: 'getAdminModule', save: 'saveStaff', del: 'deleteStaff', folder: 'Staff', fields: [['prefix', 'คำนำหน้า', 'text'], ['firstname', 'ชื่อ', 'text', true], ['lastname', 'นามสกุล', 'text'], ['position', 'ตำแหน่ง', 'text'], ['academicRank', 'ตำแหน่งทางวิชาการ', 'text'], ['department', 'สาขาวิชา/ฝ่าย', 'text'], ['photo', 'รูปบุคลากร (URL)', 'upload'], ['phone', 'โทรศัพท์', 'text'], ['email', 'Email', 'text'], ['order', 'ลำดับ', 'number'], ['status', 'สถานะ', 'status']] },
+    awards: { title: 'ผลงานและรางวัล', icon: 'fa-trophy', get: 'getAdminModule', save: 'saveAward', del: 'deleteAward', folder: 'Awards', fields: [['type', 'ประเภท', 'select:ผลงานระดับคณะ|ผลงานผู้บริหาร|ผลงานคณาจารย์|ผลงานนักศึกษา'], ['title', 'ชื่อรางวัล', 'text', true], ['recipient', 'ผู้ได้รับรางวัล', 'text'], ['level', 'ระดับ', 'text'], ['organization', 'หน่วยงาน', 'text'], ['date', 'วันที่', 'date'], ['image', 'รูป (URL)', 'upload'], ['description', 'รายละเอียด', 'textarea'], ['status', 'สถานะ', 'status']] },
+    documents: { title: 'ดาวน์โหลดเอกสาร', icon: 'fa-file-arrow-down', get: 'getAdminModule', save: 'saveDocument', del: 'deleteDocument', folder: 'Documents', fields: [['title', 'ชื่อเอกสาร', 'text', true], ['category', 'หมวดหมู่', 'select:แบบฟอร์ม|คำสั่ง|ประกาศ|คู่มือ|เอกสารวิชาการ'], ['fileUrl', 'ไฟล์/URL', 'uploadfile'], ['fileName', 'ชื่อไฟล์', 'text'], ['fileType', 'ชนิดไฟล์', 'text'], ['fileSize', 'ขนาดไฟล์', 'text'], ['date', 'วันที่', 'date'], ['status', 'สถานะ', 'status']] },
+    calendar: { title: 'ปฏิทิน', icon: 'fa-calendar-days', get: 'getAdminModule', save: 'saveCalendarEvent', del: 'deleteCalendarEvent', folder: 'Website', fields: [['title', 'ชื่อกิจกรรม', 'text', true], ['description', 'รายละเอียด', 'textarea'], ['startDate', 'วันที่เริ่ม', 'date'], ['endDate', 'วันที่สิ้นสุด', 'date'], ['location', 'สถานที่', 'text'], ['color', 'สี', 'color'], ['status', 'สถานะ', 'status']] },
+    links: { title: 'ลิงก์ที่เกี่ยวข้อง', icon: 'fa-link', get: 'getAdminModule', save: 'saveLink', del: 'deleteLink', folder: 'Website', fields: [['name', 'ชื่อ', 'text', true], ['logo', 'Logo (URL)', 'upload'], ['url', 'URL', 'text'], ['order', 'ลำดับ', 'number'], ['status', 'สถานะ', 'status']] },
+    popups: { title: 'Popup ประกาศ', icon: 'fa-bullhorn', get: 'getAdminModule', save: 'savePopup', del: 'deletePopup', folder: 'Website', fields: [['title', 'หัวข้อ', 'text', true], ['description', 'รายละเอียด', 'textarea'], ['image', 'รูป (URL)', 'upload'], ['url', 'URL', 'text'], ['startDate', 'วันที่เริ่ม', 'date'], ['endDate', 'วันที่สิ้นสุด', 'date'], ['status', 'สถานะ', 'status']] }
+};
+
+function api(fn) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    return new Promise(function (resolve, reject) {
+        if (!WEB_APP_URL || WEB_APP_URL === 'XXX') {
+            return reject(new Error('ยังไม่ได้กำหนด WEB_APP_URL ใน index.html'));
+        }
+        
+        var payload = { fn: fn, args: args };
+        fetch(WEB_APP_URL, {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(r) {
+            if (r && r.success) resolve(r.data);
+            else reject(new Error(r && r.message ? r.message : 'เกิดข้อผิดพลาดจาก Server'));
+        })
+        .catch(function(err) {
+            reject(new Error(err && err.message ? err.message : String(err)));
+        });
+    });
+}
+
+function esc(v) { return String(v !== null && v !== void 0 ? v : '').replace(/[&<>'"]/g, function (m) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[m]); }); }
+function asArray(v) { return Array.isArray(v) ? v : []; }
+function asObject(v) { return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; }
+function fmtDate(v) { if (!v) return '-'; var d = new Date(v); if (isNaN(d)) return esc(v); return d.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' }); }
+function notify(icon, title, text) { return Swal.fire({ icon: icon, title: title, text: text, confirmButtonColor: getComputedStyle(document.documentElement).getPropertyValue('--primary').trim() || '#2563eb' }); }
+function toast(icon, title) { return Swal.fire({ toast: true, position: 'top-end', icon: icon, title: title, showConfirmButton: false, timer: 1800, timerProgressBar: true }); }
+function loading(title) {
+    if (title === void 0) { title = 'กำลังประมวลผล...'; }
+    Swal.fire({ title: title, allowOutsideClick: false, didOpen: function () { return Swal.showLoading(); } });
+}
+function closeModal() { document.getElementById('modalRoot').innerHTML = ''; }
+function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+function toggleTheme() { var next = document.body.classList.contains('dark') ? 'light' : 'dark'; setTheme(next); localStorage.setItem('school_theme', next); }
+function setTheme(t) { document.body.classList.toggle('dark', t === 'dark'); }
+document.addEventListener('DOMContentLoaded', init);
+function init() {
+    return __awaiter(this, void 0, void 0, function () {
+        var key, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    setTheme(localStorage.getItem('school_theme') || 'light');
+                    document.getElementById('copyYear').textContent = new Date().getFullYear() + 543;
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 4, , 5]);
+                    key = localStorage.getItem('school_visit_key') || crypto.randomUUID();
+                    localStorage.setItem('school_visit_key', key);
+                    api('recordVisitor', key, navigator.userAgent).catch(function () { });
+                    return [4 /*yield*/, loadPublic()];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, restoreSession()];
+                case 3:
+                    _a.sent();
+                    return [3 /*break*/, 5];
+                case 4:
+                    e_1 = _a.sent();
+                    notify('error', 'ไม่สามารถโหลดระบบ', e_1.message);
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
+function loadPublic() {
+    return __awaiter(this, void 0, void 0, function () {
+        var raw, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, api('getPublicHomeData')];
+                case 1:
+                    raw = _a.sent(), data = asObject(raw);
+                    state.public = __assign(__assign({}, data), { banners: asArray(data.banners), news: asArray(data.news), activities: asArray(data.activities), staff: asArray(data.staff), awards: asArray(data.awards), documents: asArray(data.documents), links: asArray(data.links), calendar: asArray(data.calendar), popups: asArray(data.popups) });
+                    state.settings = asObject(data.settings);
+                    applySettings();
+                    renderHero(state.public.banners);
+                    renderNews(state.public.news);
+                    renderActivities(state.public.activities);
+                    renderStaff(state.public.staff);
+                    renderAwards(state.public.awards);
+                    renderDocuments(state.public.documents);
+                    renderLinks(state.public.links);
+                    renderSchoolStats();
+                    renderVisitors(asObject(data.visitors));
+                    renderCalendar();
+                    showPopup(state.public.popups);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function applySettings() {
+    var s = state.settings;
+    var root = document.documentElement;
+    root.style.setProperty('--primary', s.primaryColor || '#2563eb');
+    root.style.setProperty('--secondary', s.secondaryColor || '#0f172a');
+    root.style.setProperty('--accent', s.accentColor || '#f59e0b');
+    if (!localStorage.getItem('school_theme'))
+        setTheme(s.defaultTheme || 'light');
+    var name = s.schoolName || 'คณะวิทยาศาสตร์การกีฬา';
+    document.title = s.seoTitle || name;
+    document.querySelector('meta[name="description"]').content = s.seoDescription || '';
+    document.querySelector('meta[name="keywords"]').content = s.seoKeywords || '';
+    document.querySelector('meta[property="og:title"]').content = s.seoTitle || name;
+    document.querySelector('meta[property="og:description"]').content = s.seoDescription || '';
+    if (s.favicon) {
+        var l = document.querySelector('link[rel="icon"]');
+        if (!l) {
+            l = document.createElement('link');
+            l.rel = 'icon';
+            document.head.appendChild(l);
+        }
+        l.href = imageSrc(s.favicon, 'ICON');
+    }
+    setText('schoolName', name);
+    setText('schoolSub', s.schoolNameEn || s.affiliation || '');
+    setText('welcomeName', name);
+    setText('welcomeHistory', s.history || s.shortInfo || 'ยังไม่ได้กรอกประวัติ');
+    setText('philosophy', s.philosophy || '-');
+    setText('identity', s.identity || '-');
+    setText('vision', s.vision || '-');
+    setText('mission', s.mission || '-');
+    setText('footerSchool', name);
+    setText('copySchool', name);
+    setText('footerText', s.footerText || s.shortInfo || 'เว็บไซต์คณะวิทยาศาสตร์การกีฬา');
+    var logo = document.getElementById('brandLogo');
+    logo.onerror = function () { return imgFallback(logo, 'LOGO'); };
+    logo.src = imageSrc(s.logo, 'LOGO');
+    var schoolImg = document.getElementById('schoolImage');
+    schoolImg.onerror = function () { return imgFallback(schoolImg, 'FACULTY'); };
+    schoolImg.src = imageSrc(s.schoolImage, 'FACULTY');
+    document.getElementById('topContact').textContent = [s.phone ? 'โทร ' + s.phone : '', s.email || ''].filter(Boolean).join(' • ') || 'ยินดีต้อนรับสู่คณะวิทยาศาสตร์การกีฬา';
+    document.getElementById('topSocial').innerHTML = socialLinks(s);
+    document.getElementById('contactInfo').innerHTML = contactHtml(s);
+    document.getElementById('footerContact').innerHTML = contactHtml(s);
+    renderMap(s.googleMaps);
+    document.getElementById('backTopBtn').style.display = s.showBackToTop === 'false' ? 'none' : 'grid';
+    renderFloatButtons(s);
+}
+function setText(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+function placeholder(text) { return "data:image/svg+xml;charset=UTF-8,".concat(encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"500\"><rect width=\"100%\" height=\"100%\" fill=\"#e2e8f0\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"#64748b\" font-size=\"42\" font-family=\"sans-serif\">".concat(text, "</text></svg>"))); }
+function driveImageParts(url) {
+    var s = String(url || '').trim();
+    if (!s) return null;
+    var m = s.match(/[?&]id=([A-Za-z0-9_-]{10,})/);
+    if (!m) m = s.match(/\/d\/([A-Za-z0-9_-]{10,})/);
+    if (!m) m = s.match(/googleusercontent\.com\/d\/([A-Za-z0-9_-]{10,})/);
+    if (!m) return null;
+    var rk = (s.match(/[?&]resourcekey=([^&#]+)/i) || [])[1] || '';
+    return { id: m[1], resourceKey: rk };
+}
+function imageSrc(url, label) {
+    if (label === void 0) { label = 'IMAGE'; }
+    var s = String(url || '').trim();
+    if (!s) return placeholder(label);
+    if (/^data:image\//i.test(s) || /^blob:/i.test(s)) return s;
+    if (/drive\.google\.com|googleusercontent\.com/i.test(s)) {
+        var p = driveImageParts(s);
+        if (p) {
+            var decoded = p.resourceKey;
+            try { decoded = decodeURIComponent(decoded); } catch (_e) { }
+            var rk = decoded ? "&resourcekey=" + encodeURIComponent(decoded) : '';
+            return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(p.id) + "&sz=w1600" + rk;
+        }
+    }
+    return s;
+}
+function imgFallback(el, label) {
+    if (label === void 0) { label = 'IMAGE'; }
+    if (!el) return;
+    el.onerror = null;
+    el.src = placeholder(label);
+}
+function socialLinks(s) { return [['facebook', 'fa-facebook-f'], ['youtube', 'fa-youtube'], ['tiktok', 'fa-tiktok'], ['instagram', 'fa-instagram'], ['line', 'fa-line']].filter(function (_a) {
+    var _b = __read(_a, 1), k = _b[0];
+    return s[k];
+}).map(function (_a) {
+    var _b = __read(_a, 2), k = _b[0], i = _b[1];
+    return '<a href="' + esc(s[k]) + '" target="_blank" rel="noopener" aria-label="' + k + '"><i class="fa-brands ' + i + '"></i></a>';
+}).join(''); }
+function contactHtml(s) { var addr = [s.address, s.subdistrict && 'ต.' + s.subdistrict, s.district && 'อ.' + s.district, s.province && 'จ.' + s.province, s.postcode].filter(Boolean).join(' '); return '<p><i class="fa-solid fa-location-dot"></i> ' + esc(addr || '-') + '</p><p><i class="fa-solid fa-phone"></i> ' + esc(s.phone || '-') + '</p><p><i class="fa-solid fa-envelope"></i> ' + esc(s.email || '-') + '</p>'; }
+function googleMapsEmbedSrc(value) {
+    var raw = String(value || '').trim();
+    if (!raw) return '';
+    var iframeMatch = raw.match(/<iframe\b[^>]*\bsrc\s*=\s*["']([^"']+)["'][^>]*>/i);
+    if (iframeMatch && iframeMatch[1]) raw = iframeMatch[1];
+    raw = raw.replace(/&amp;/gi, '&').trim();
+    if (!/^https:\/\/(www\.)?google\.[a-z.]+\/maps\/embed\?/i.test(raw)) return '';
+    return raw;
+}
+function renderMap(value) {
+    var box = document.getElementById('mapBox');
+    if (!box) return;
+    var src = googleMapsEmbedSrc(value);
+    if (!src) {
+        box.innerHTML = '<div class="empty"><i class="fa-solid fa-map-location-dot"></i>ยังไม่ได้ตั้งค่า Google Maps หรือรูปแบบลิงก์ไม่ถูกต้อง</div>';
+        return;
+    }
+    box.innerHTML = '<iframe title="Google Maps" src="' + esc(src) + '" width="100%" height="100%" style="border:0;min-height:300px" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>';
+}
+function renderFloatButtons(s) { var stack = document.getElementById('floatStack'); stack.querySelectorAll('.dynamic-float').forEach(function (x) { return x.remove(); }); if (s.showLineFloat !== 'false' && s.line) stack.insertAdjacentHTML('afterbegin', '<a class="float-btn dynamic-float" href="' + esc(s.line) + '" target="_blank" aria-label="LINE"><i class="fa-brands fa-line"></i></a>'); if (s.showMessengerFloat !== 'false' && (s.messenger || s.facebook)) stack.insertAdjacentHTML('afterbegin', '<a class="float-btn dynamic-float" href="' + esc(s.messenger || s.facebook) + '" target="_blank" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>'); }
+function renderHero(rows) { rows = asArray(rows); clearInterval(state.heroTimer); var hero = document.getElementById('hero'); hero.querySelectorAll('.hero-slide').forEach(function (x) { return x.remove(); }); var fallbackTitle = document.getElementById('heroFallbackTitle'), fallbackText = document.getElementById('heroFallbackText'); if (!rows.length) {
+    fallbackTitle.style.display = 'block';
+    fallbackText.style.display = 'block';
+    document.getElementById('heroDots').innerHTML = '';
+    return;
+} fallbackTitle.style.display = 'none'; fallbackText.style.display = 'none'; rows.forEach(function (r, i) { return hero.insertAdjacentHTML('afterbegin', '<div class="hero-slide ' + (i === 0 ? 'active' : '') + '" data-idx="' + i + '" style="background-image:url(\'' + esc(imageSrc(r.image, 'BANNER')) + '\')"><div class="container hero-content"><div class="hero-copy"><span class="eyebrow" style="color:#fde68a">มหาวิทยาลัยการกีฬาแห่งชาติ วิทยาเขตมหาสารคาม</span><h2>' + esc(r.title) + '</h2><p>' + esc(r.description || '') + '</p>' + (r.url ? '<a class="btn btn-primary" href="' + esc(r.url) + '" target="_blank">' + esc(r.buttonText || 'ดูเพิ่มเติม') + '</a>' : '') + '</div></div></div>'); }); document.getElementById('heroDots').innerHTML = rows.map(function (_, i) { return '<button class="hero-dot ' + (i === 0 ? 'active' : '') + '" onclick="heroGo(' + i + ')" aria-label="สไลด์ ' + (i + 1) + '"></button>'; }).join(''); state.heroIndex = 0; state.heroTimer = setInterval(heroNext, 5000); }
+function heroGo(i) { var slides = __spreadArray([], __read(document.querySelectorAll('.hero-slide')), false), dots = __spreadArray([], __read(document.querySelectorAll('.hero-dot')), false); if (!slides.length) return; state.heroIndex = (i + slides.length) % slides.length; slides.forEach(function (x, j) { return x.classList.toggle('active', j === state.heroIndex); }); dots.forEach(function (x, j) { return x.classList.toggle('active', j === state.heroIndex); }); }
+function heroNext() { heroGo(state.heroIndex + 1); }
+function heroPrev() { heroGo(state.heroIndex - 1); }
+function emptyHtml(text) {
+    if (text === void 0) { text = 'ยังไม่มีข้อมูลในขณะนี้'; }
+    return '<div class="empty card"><i class="fa-regular fa-folder-open"></i>' + esc(text) + '</div>';
+}
+function renderNews(rows) { rows = asArray(rows); var el = document.getElementById('newsGrid'); el.innerHTML = rows.length ? rows.map(function (r) { return '<article class="card media-card"><img src="' + esc(imageSrc(r.coverImage, 'NEWS')) + '" alt="' + esc(r.title) + '" onerror="imgFallback(this,\'NEWS\')"><div class="card-body"><div class="meta"><span>' + fmtDate(r.publishDate || r.createdAt) + '</span><span><i class="fa-regular fa-eye"></i> ' + (Number(r.views) || 0) + '</span>' + (r.pinned ? '<span>📌 ปักหมุด</span>' : '') + '</div><h3>' + esc(r.title) + '</h3><p class="muted">' + esc(r.summary || '').slice(0, 120) + '</p><button class="btn btn-light btn-sm" onclick="openNews(\'' + esc(r.id) + '\')">อ่านเพิ่มเติม</button></div></article>'; }).join('') : emptyHtml(); }
+function openNews(id) {
+    return __awaiter(this, void 0, void 0, function () { var r, e_2; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, api('getNewsById', id)];
+            case 1:
+                r = _a.sent();
+                api('increaseNewsView', id).catch(function () { });
+                openDetail(r.title, '<div class="meta"><span>' + fmtDate(r.publishDate || r.createdAt) + '</span><span>' + esc(r.author || '') + '</span></div>' + (r.coverImage ? '<img src="' + esc(imageSrc(r.coverImage, 'NEWS')) + '" alt="" onerror="imgFallback(this,\'NEWS\')" style="width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin:14px 0">' : '') + '<div>' + (r.content || esc(r.summary || '')) + '</div>' + (r.fileUrl ? '<p><a class="btn btn-primary" href="' + esc(r.fileUrl) + '" target="_blank">เปิดเอกสารแนบ</a></p>' : ''));
+                return [3 /*break*/, 3];
+            case 2:
+                e_2 = _a.sent();
+                notify('error', 'เปิดข่าวไม่ได้', e_2.message);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    }); });
+}
+function renderActivities(rows) { rows = asArray(rows); var el = document.getElementById('activityGrid'); el.innerHTML = rows.length ? rows.map(function (r) { return '<article class="card media-card"><img src="' + esc(imageSrc(r.coverImage, 'ACTIVITY')) + '" alt="' + esc(r.title) + '" onerror="imgFallback(this,\'ACTIVITY\')"><div class="card-body"><div class="meta"><span>' + fmtDate(r.date) + '</span><span>' + esc(r.location || '') + '</span></div><h3>' + esc(r.title) + '</h3><p class="muted">' + esc(r.description || '').replace(/<[^>]+>/g, '').slice(0, 130) + '</p><button class="btn btn-light btn-sm" onclick="openActivity(\'' + esc(r.id) + '\')">รายละเอียด</button></div></article>'; }).join('') : emptyHtml(); }
+function openActivity(id) { var _a; var r = (((_a = state.public) === null || _a === void 0 ? void 0 : _a.activities) || []).find(function (x) { return x.id === id; }); if (!r) return; openDetail(r.title, (r.coverImage ? '<img src="' + esc(imageSrc(r.coverImage, 'ACTIVITY')) + '" alt="" onerror="imgFallback(this,\'ACTIVITY\')" style="width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin-bottom:14px">' : '') + '<div>' + esc(r.description || '').replace(/\n/g, '<br>') + '</div><p><b>วันที่:</b> ' + fmtDate(r.date) + ' &nbsp; <b>สถานที่:</b> ' + esc(r.location || '-') + '</p>'); }
+function openSchoolProfile() { var s = state.settings; openDetail(s.schoolName || 'ข้อมูลคณะวิทยาศาสตร์การกีฬา', '<div class="grid grid-2"><div><b>ประวัติคณะฯ</b><p>' + esc(s.history || '-').replace(/\n/g, '<br>') + '</p></div><div><b>ข้อมูลพื้นฐาน</b><p>' + esc(s.shortInfo || '-') + '</p></div><div><b>วิสัยทัศน์</b><p>' + esc(s.vision || '-').replace(/\n/g, '<br>') + '</p></div><div><b>พันธกิจ</b><p>' + esc(s.mission || '-').replace(/\n/g, '<br>') + '</p></div><div><b>ปรัชญา</b><p>' + esc(s.philosophy || '-') + '</p></div><div><b>อัตลักษณ์</b><p>' + esc(s.identity || '-') + '</p></div><div><b>เอกลักษณ์</b><p>' + esc(s.uniqueness || '-') + '</p></div></div>'); }
+function openNewsArchive() {
+    return __awaiter(this, void 0, void 0, function () { var rows, e_3; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                loading('กำลังโหลดข่าวทั้งหมด...');
+                return [4 /*yield*/, api('getNews', {}, null)];
+            case 1:
+                rows = _a.sent();
+                Swal.close();
+                state.newsArchive = asArray(rows);
+                renderNewsArchive(state.newsArchive);
+                return [3 /*break*/, 3];
+            case 2:
+                e_3 = _a.sent();
+                Swal.close();
+                notify('error', 'โหลดข่าวไม่ได้', e_3.message);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    }); });
+}
+function renderNewsArchive(rows) { rows = asArray(rows); var cats = __spreadArray([], __read(new Set(rows.map(function (r) { return r.category; }).filter(Boolean))), false), years = __spreadArray([], __read(new Set(rows.map(function (r) { return String(r.publishDate || r.createdAt || '').slice(0, 4); }).filter(Boolean))), false).sort().reverse(); document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal modal-lg"><div class="modal-head"><h3>ข่าวประชาสัมพันธ์ทั้งหมด</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="form-grid" style="margin-bottom:16px"><div class="field"><label>ค้นหา</label><input class="input" id="newsArcSearch" oninput="filterNewsArchive()"></div><div class="field"><label>หมวดหมู่</label><select class="select" id="newsArcCat" onchange="filterNewsArchive()"><option value="">ทั้งหมด</option>' + cats.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></div><div class="field"><label>ปี</label><select class="select" id="newsArcYear" onchange="filterNewsArchive()"><option value="">ทั้งหมด</option>' + years.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></div></div><div id="newsArchiveList"></div></div></div></div>'; filterNewsArchive(); }
+function filterNewsArchive() { var _a, _b, _c; var q = (((_a = document.getElementById('newsArcSearch')) === null || _a === void 0 ? void 0 : _a.value) || '').toLowerCase(), cat = ((_b = document.getElementById('newsArcCat')) === null || _b === void 0 ? void 0 : _b.value) || '', year = ((_c = document.getElementById('newsArcYear')) === null || _c === void 0 ? void 0 : _c.value) || ''; var rows = asArray(state.newsArchive).filter(function (r) { return (!q || Object.values(r).join(' ').toLowerCase().includes(q)) && (!cat || r.category === cat) && (!year || String(r.publishDate || r.createdAt || '').startsWith(year)); }); var el = document.getElementById('newsArchiveList'); if (el) el.innerHTML = rows.length ? rows.map(function (r) { return '<div class="doc-row"><div><b>' + esc(r.title) + '</b><div class="meta"><span>' + esc(r.category || '') + '</span><span>' + fmtDate(r.publishDate || r.createdAt) + '</span></div></div><button class="btn btn-light btn-sm" onclick="openNews(\'' + esc(r.id) + '\')">อ่าน</button></div>'; }).join('') : emptyHtml(); }
+function openAwardArchive() {
+    return __awaiter(this, void 0, void 0, function () { var rows, e_4; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                loading('กำลังโหลดผลงานและรางวัล...');
+                return [4 /*yield*/, api('getAwards', {}, null)];
+            case 1:
+                rows = _a.sent();
+                Swal.close();
+                state.awardArchive = asArray(rows);
+                renderAwardArchive(state.awardArchive);
+                return [3 /*break*/, 3];
+            case 2:
+                e_4 = _a.sent();
+                Swal.close();
+                notify('error', 'โหลดข้อมูลไม่ได้', e_4.message);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    }); });
+}
+function renderAwardArchive(rows) { rows = asArray(rows); var types = __spreadArray([], __read(new Set(rows.map(function (r) { return r.type; }).filter(Boolean))), false), levels = __spreadArray([], __read(new Set(rows.map(function (r) { return r.level; }).filter(Boolean))), false), years = __spreadArray([], __read(new Set(rows.map(function (r) { return String(r.date || '').slice(0, 4); }).filter(Boolean))), false).sort().reverse(); document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal modal-lg"><div class="modal-head"><h3>ผลงานและรางวัลทั้งหมด</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="form-grid" style="margin-bottom:16px"><div class="field"><label>ประเภท</label><select class="select" id="awardType" onchange="filterAwardArchive()"><option value="">ทั้งหมด</option>' + types.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></div><div class="field"><label>ระดับ</label><select class="select" id="awardLevel" onchange="filterAwardArchive()"><option value="">ทั้งหมด</option>' + levels.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></div><div class="field"><label>ปี</label><select class="select" id="awardYear" onchange="filterAwardArchive()"><option value="">ทั้งหมด</option>' + years.map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('') + '</select></div></div><div id="awardArchiveList"></div></div></div></div>'; filterAwardArchive(); }
+function filterAwardArchive() { var _a, _b, _c; var t = ((_a = document.getElementById('awardType')) === null || _a === void 0 ? void 0 : _a.value) || '', l = ((_b = document.getElementById('awardLevel')) === null || _b === void 0 ? void 0 : _b.value) || '', y = ((_c = document.getElementById('awardYear')) === null || _c === void 0 ? void 0 : _c.value) || ''; var rows = asArray(state.awardArchive).filter(function (r) { return (!t || r.type === t) && (!l || r.level === l) && (!y || String(r.date || '').startsWith(y)); }); var el = document.getElementById('awardArchiveList'); if (el) el.innerHTML = rows.length ? rows.map(function (r) { return '<div class="doc-row"><div><b>' + esc(r.title) + '</b><div class="meta"><span>' + esc(r.type || '') + '</span><span>' + esc(r.level || '') + '</span><span>' + esc(r.recipient || '') + '</span><span>' + fmtDate(r.date) + '</span></div></div></div>'; }).join('') : emptyHtml(); }
+function renderStaff(rows) { rows = asArray(rows); var el = document.getElementById('staffGrid'); var sorted = __spreadArray([], __read(rows), false).sort(function (a, b) { var ap = /คณบดี/.test(a.position || '') ? -1 : 0, bp = /คณบดี/.test(b.position || '') ? -1 : 0; return ap - bp || (Number(a.order) || 0) - (Number(b.order) || 0); }); el.innerHTML = sorted.length ? sorted.map(function (r) { return '<div class="card staff-card"><img src="' + esc(imageSrc(r.photo, 'PHOTO')) + '" alt="' + esc(r.firstname) + '" onerror="imgFallback(this,\'PHOTO\')"><h3 style="margin:0">' + esc([r.prefix, r.firstname, r.lastname].filter(Boolean).join(' ')) + '</h3><p class="muted" style="margin:6px 0">' + esc(r.position || '-') + '</p><span class="badge">' + esc(r.academicRank || r.department || 'บุคลากร') + '</span></div>'; }).join('') : emptyHtml(); }
+function renderAwards(rows) { rows = asArray(rows); var el = document.getElementById('awardGrid'); el.innerHTML = rows.length ? rows.map(function (r) { return '<article class="card media-card"><img src="' + esc(imageSrc(r.image, 'AWARD')) + '" alt="' + esc(r.title) + '" onerror="imgFallback(this,\'AWARD\')"><div class="card-body"><span class="badge">' + esc(r.type || 'รางวัล') + '</span><h3>' + esc(r.title) + '</h3><p class="muted">' + esc(r.recipient || '') + '</p><div class="meta"><span>' + esc(r.level || '') + '</span><span>' + fmtDate(r.date) + '</span></div></div></article>'; }).join('') : emptyHtml(); }
+function renderDocuments(rows) { rows = asArray(rows); var el = document.getElementById('documentList'); el.innerHTML = rows.length ? rows.map(function (r) { return '<div class="doc-row"><div><b>' + esc(r.title) + '</b><div class="meta"><span>' + esc(r.category || 'เอกสาร') + '</span><span>' + fmtDate(r.date) + '</span><span>' + esc(r.fileType || '') + '</span><span>ดาวน์โหลด ' + (Number(r.downloads) || 0) + '</span></div></div>' + (r.fileUrl ? '<a class="btn btn-primary btn-sm" href="' + esc(r.fileUrl) + '" target="_blank" onclick="countDownload(\'' + esc(r.id) + '\')"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>' : '') + '</div>'; }).join('') : emptyHtml(); }
+function countDownload(id) { api('increaseDownloadCount', id).catch(function () { }); }
+function renderLinks(rows) { rows = asArray(rows); var el = document.getElementById('linkGrid'); el.innerHTML = rows.length ? rows.map(function (r) { return '<a class="card link-card" href="' + esc(r.url || '#') + '" target="_blank" rel="noopener"><img src="' + esc(imageSrc(r.logo, 'LINK')) + '" alt="" onerror="imgFallback(this,\'LINK\')"><b>' + esc(r.name) + '</b></a>'; }).join('') : emptyHtml(); }
+function renderSchoolStats() { var _a; var s = state.settings; var arr = [['fa-user-graduate', 'นักศึกษา', s.studentCount || 0], ['fa-chalkboard-user', 'คณาจารย์และบุคลากร', s.staffCount || ((_a = state.public.staff) === null || _a === void 0 ? void 0 : _a.length) || 0], ['fa-book', 'หลักสูตร', s.classroomCount || 0], ['fa-layer-group', 'ชั้นปี', s.gradeCount || 0]]; document.getElementById('schoolStats').innerHTML = arr.map(function (_a) {
+    var _b = __read(_a, 3), i = _b[0], l = _b[1], v = _b[2];
+    return '<div class="card stat-card"><div class="stat-icon"><i class="fa-solid ' + i + '"></i></div><div><div class="stat-value">' + esc(v) + '</div><div class="muted">' + l + '</div></div></div>';
+}).join(''); }
+function renderVisitors(v) { document.getElementById('visitorBox').innerHTML = [['วันนี้', v.today], ['เมื่อวาน', v.yesterday], ['เดือนนี้', v.month], ['ปีนี้', v.year], ['ทั้งหมด', v.total], ['ออนไลน์', v.online]].map(function (_a) {
+    var _b = __read(_a, 2), l = _b[0], n = _b[1];
+    return '<div><b>' + (Number(n) || 0) + '</b><br><small>' + l + '</small></div>';
+}).join(''); }
+function renderCalendar() { var _a; var rows = asArray((_a = state.public) === null || _a === void 0 ? void 0 : _a.calendar), d = new Date(state.calendarDate.getFullYear(), state.calendarDate.getMonth(), 1), year = d.getFullYear(), month = d.getMonth(); document.getElementById('calendarTitle').textContent = d.toLocaleDateString('th-TH', { month: 'long', year: 'numeric' }); var first = (d.getDay() + 6) % 7, days = new Date(year, month + 1, 0).getDate(); var html = ['จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส', 'อา'].map(function (x) { return '<div class="calendar-head">' + x + '</div>'; }).join(''); for (var i = 0; i < first; i++) html += '<div></div>'; var _loop_1 = function (day) {
+    var dateStr = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0'), events = rows.filter(function (r) { var s = String(r.startDate || '').slice(0, 10), e = String(r.endDate || r.startDate || '').slice(0, 10); return dateStr >= s && dateStr <= e; });
+    html += '<div class="calendar-day"><div class="num">' + day + '</div>' + events.slice(0, 3).map(function (r) { return '<div class="calendar-event" title="' + esc(r.title) + '" onclick="openCalendarEvent(\'' + esc(r.id) + '\')">' + esc(r.title) + '</div>'; }).join('') + '</div>';
+}; for (var day = 1; day <= days; day++) { _loop_1(day); } document.getElementById('calendarGrid').innerHTML = html; }
+function changeCalendarMonth(delta) { state.calendarDate = new Date(state.calendarDate.getFullYear(), state.calendarDate.getMonth() + delta, 1); renderCalendar(); }
+function openCalendarEvent(id) { var _a; var r = (((_a = state.public) === null || _a === void 0 ? void 0 : _a.calendar) || []).find(function (x) { return x.id === id; }); if (r) openDetail(r.title, '<p>' + esc(r.description || '') + '</p><p><b>วันที่:</b> ' + fmtDate(r.startDate) + ' - ' + fmtDate(r.endDate || r.startDate) + '</p><p><b>สถานที่:</b> ' + esc(r.location || '-') + '</p>'); }
+function showPopup(rows) { rows = asArray(rows); if (!rows.length) return; var r = rows[0]; var key = 'popup_seen_' + r.id; if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, '1'); setTimeout(function () { return openDetail(r.title, (r.image ? '<img src="' + esc(imageSrc(r.image, 'POPUP')) + '" onerror="imgFallback(this,\'POPUP\')" style="width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:14px" alt="">' : '') + '<p>' + esc(r.description || '') + '</p>' + (r.url ? '<p><a class="btn btn-primary" href="' + esc(r.url) + '" target="_blank">ดูเพิ่มเติม</a></p>' : '')); }, 700); }
+function openDetail(title, html) { document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal modal-lg"><div class="modal-head"><h3 style="margin:0">' + esc(title) + '</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">' + html + '</div></div></div>'; }
+function openLogin() { document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal" style="max-width:430px"><div class="modal-head"><h3 style="margin:0">เข้าสู่ระบบผู้ดูแล</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><form class="modal-body" onsubmit="submitLogin(event)"><div class="field"><label>Username</label><input class="input" id="loginUser" required autocomplete="username"></div><div class="field" style="margin-top:12px"><label>Password</label><div style="display:flex;gap:8px"><input class="input" id="loginPass" type="password" required autocomplete="current-password"><button type="button" class="btn btn-light" onclick="togglePassword()"><i class="fa-solid fa-eye"></i></button></div></div><label style="display:flex;gap:8px;align-items:center;margin:14px 0"><input type="checkbox" id="rememberMe"> Remember me</label><button class="btn btn-primary" style="width:100%" id="loginBtn"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</button></form></div></div>'; }
+function togglePassword() { var p = document.getElementById('loginPass'); if (p) p.type = p.type === 'password' ? 'text' : 'password'; }
+function submitLogin(e) {
+    return __awaiter(this, void 0, void 0, function () { var btn, remember, d, err_1; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                btn = document.getElementById('loginBtn');
+                btn.disabled = true;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, 4, 5]);
+                loading('กำลังเข้าสู่ระบบ...');
+                remember = document.getElementById('rememberMe').checked;
+                return [4 /*yield*/, api('login', document.getElementById('loginUser').value, document.getElementById('loginPass').value, remember)];
+            case 2:
+                d = _a.sent();
+                state.admin.token = d.token;
+                state.admin.user = d.user;
+                (remember ? localStorage : sessionStorage).setItem('school_admin_token', d.token);
+                Swal.close();
+                closeModal();
+                openAdmin();
+                if (d.user.mustChangePassword) setTimeout(openChangePassword, 350);
+                return [3 /*break*/, 5];
+            case 3:
+                err_1 = _a.sent();
+                Swal.close();
+                notify('error', 'เข้าสู่ระบบไม่สำเร็จ', err_1.message);
+                return [3 /*break*/, 5];
+            case 4:
+                if (btn) btn.disabled = false;
+                return [7 /*endfinally*/];
+            case 5: return [2 /*return*/];
+        }
+    }); });
+}
+function restoreSession() {
+    return __awaiter(this, void 0, void 0, function () { var token, d, _e_1; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                token = sessionStorage.getItem('school_admin_token') || localStorage.getItem('school_admin_token');
+                if (!token) return [2 /*return*/];
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, api('checkSession', token)];
+            case 2:
+                d = _a.sent();
+                state.admin.token = token;
+                state.admin.user = d.user;
+                return [3 /*break*/, 4];
+            case 3:
+                _e_1 = _a.sent();
+                localStorage.removeItem('school_admin_token');
+                sessionStorage.removeItem('school_admin_token');
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function doLogout() {
+    return __awaiter(this, void 0, void 0, function () { var _e_2; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                if (!state.admin.token) return [3 /*break*/, 2];
+                return [4 /*yield*/, api('logout', state.admin.token)];
+            case 1:
+                _a.sent();
+                _a.label = 2;
+            case 2: return [3 /*break*/, 4];
+            case 3:
+                _e_2 = _a.sent();
+                return [3 /*break*/, 4];
+            case 4:
+                localStorage.removeItem('school_admin_token');
+                sessionStorage.removeItem('school_admin_token');
+                state.admin = { token: null, user: null, module: null, rows: [], page: 1, pageSize: 10, search: '', status: 'all' };
+                document.getElementById('adminRoot').innerHTML = '';
+                toast('success', 'ออกจากระบบแล้ว');
+                return [2 /*return*/];
+        }
+    }); });
+}
+function openAdmin() { var _a, _b; if (!state.admin.token) { openLogin(); return; } document.getElementById('adminRoot').innerHTML = '<div class="admin-shell"><aside class="admin-side" id="adminSide"><div class="admin-brand"><i class="fa-solid fa-school"></i><span>Faculty Admin</span></div><div class="admin-menu" id="adminMenu"></div></aside><header class="admin-top"><div style="display:flex;align-items:center;gap:10px"><button class="btn btn-light mobile-admin-toggle" onclick="toggleAdminSide()"><i class="fa-solid fa-bars"></i></button><b id="adminPageTitle">Dashboard</b></div><div style="display:flex;gap:8px;align-items:center"><span class="muted" id="adminUserLabel"></span><button class="btn btn-light btn-sm" onclick="document.getElementById(\'adminRoot\').innerHTML=\'\'">ดูหน้าเว็บ</button></div></header><main class="admin-main" id="adminMain"></main></div>'; renderAdminMenu(); document.getElementById('adminUserLabel').textContent = (((_a = state.admin.user) === null || _a === void 0 ? void 0 : _a.name) || '') + ' • ' + (((_b = state.admin.user) === null || _b === void 0 ? void 0 : _b.role) || ''); adminDashboard(); }
+function renderAdminMenu() { var u = state.admin.user || {}, items = __spreadArray(__spreadArray([['dashboard', 'Dashboard', 'fa-chart-line']], __read(Object.entries(MODULES).map(function (_a) {
+    var _b = __read(_a, 2), k = _b[0], v = _b[1];
+    return [k, v.title, v.icon];
+})), false), [['settings', 'ตั้งค่าเว็บไซต์', 'fa-gear'], ['users', 'ผู้ใช้งาน', 'fa-users-gear'], ['logs', 'Logs', 'fa-list-check'], ['backup', 'Backup', 'fa-database'], ['logout', 'ออกจากระบบ', 'fa-right-from-bracket']], false); var allowed = items.filter(function (_a) {
+    var _b = __read(_a, 1), k = _b[0];
+    if (u.role === 'Editor') return ['dashboard', 'news', 'activities', 'logout'].includes(k);
+    if (u.role === 'Admin') return !['users', 'backup'].includes(k);
+    return true;
+}); document.getElementById('adminMenu').innerHTML = allowed.map(function (_a) {
+    var _b = __read(_a, 3), k = _b[0], l = _b[1], i = _b[2];
+    return '<button id="menu-' + k + '" onclick="adminNavigate(\'' + k + '\')"><i class="fa-solid ' + i + '"></i>' + esc(l) + '</button>';
+}).join(''); }
+function toggleAdminSide() { var _a; (_a = document.getElementById('adminSide')) === null || _a === void 0 ? void 0 : _a.classList.toggle('open'); }
+function markMenu(k) { var _a; document.querySelectorAll('.admin-menu button').forEach(function (b) { return b.classList.toggle('active', b.id === 'menu-' + k); }); (_a = document.getElementById('adminSide')) === null || _a === void 0 ? void 0 : _a.classList.remove('open'); }
+function adminNavigate(k) { markMenu(k); if (k === 'dashboard') return adminDashboard(); if (MODULES[k]) return adminModule(k); if (k === 'settings') return adminSettings(); if (k === 'users') return adminUsers(); if (k === 'logs') return adminLogs(); if (k === 'backup') return adminBackup(); if (k === 'logout') return doLogout(); }
+function adminDashboard() {
+    return __awaiter(this, void 0, void 0, function () { var main, d, c, v, e_5; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                markMenu('dashboard');
+                setText('adminPageTitle', 'Dashboard');
+                main = document.getElementById('adminMain');
+                main.innerHTML = '<div class="empty"><div class="spinner" style="margin:auto"></div><p>กำลังโหลด Dashboard...</p></div>';
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, api('getDashboardStats', state.admin.token)];
+            case 2:
+                d = _a.sent(), c = d.counts || {}, v = d.visitors || {};
+                main.innerHTML = '<div class="metric-grid">' + [['ข่าว', c.news, 'fa-newspaper'], ['กิจกรรม', c.activities, 'fa-images'], ['บุคลากร', c.staff, 'fa-users'], ['รางวัล', c.awards, 'fa-trophy'], ['เอกสาร', c.documents, 'fa-file'], ['ผู้เข้าชมทั้งหมด', v.total, 'fa-eye']].map(function (_a) {
+                    var _b = __read(_a, 3), l = _b[0], n = _b[1], i = _b[2];
+                    return '<div class="card metric"><span class="muted"><i class="fa-solid ' + i + '"></i> ' + l + '</span><b>' + (Number(n) || 0) + '</b></div>';
+                }).join('') + '</div><div class="card chart-card"><h3>ภาพรวมรายเดือน</h3><canvas id="dashboardChart" height="90"></canvas></div>';
+                renderDashboardChart(d.monthly);
+                return [3 /*break*/, 4];
+            case 3:
+                e_5 = _a.sent();
+                main.innerHTML = emptyHtml(e_5.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function renderDashboardChart(m) { m = asObject(m); if (state.chart) state.chart.destroy(); var ctx = document.getElementById('dashboardChart'); if (!ctx) return; state.chart = new Chart(ctx, { type: 'line', data: { labels: asArray(m.labels), datasets: [{ label: 'ข่าว', data: asArray(m.news) }, { label: 'กิจกรรม', data: asArray(m.activities) }, { label: 'ผู้เข้าชม', data: asArray(m.visitors) }] }, options: { responsive: true, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'bottom' } } } }); }
+function adminModule(key) {
+    return __awaiter(this, void 0, void 0, function () { var main, _a, _b, e_6; return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                state.admin.module = key;
+                state.admin.page = 1;
+                state.admin.search = '';
+                state.admin.status = 'all';
+                setText('adminPageTitle', MODULES[key].title);
+                main = document.getElementById('adminMain');
+                main.innerHTML = '<div class="empty"><div class="spinner" style="margin:auto"></div><p>กำลังโหลดข้อมูล...</p></div>';
+                _c.label = 1;
+            case 1:
+                _c.trys.push([1, 3, , 4]);
+                _a = state.admin;
+                _b = asArray;
+                return [4 /*yield*/, api(MODULES[key].get, key, state.admin.token)];
+            case 2:
+                _a.rows = _b.apply(void 0, [_c.sent()]);
+                renderAdminTable();
+                return [3 /*break*/, 4];
+            case 3:
+                e_6 = _c.sent();
+                main.innerHTML = emptyHtml(e_6.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function renderAdminTable() {
+    var key = state.admin.module, m = MODULES[key], main = document.getElementById('adminMain');
+    if (!m) return;
+    var q = String(state.admin.search || '').toLowerCase(), sourceRows = asArray(state.admin.rows), filtered = sourceRows.filter(function (r) { var txt = Object.values(r).join(' ').toLowerCase(); var okQ = !q || txt.includes(q), okS = state.admin.status === 'all' || r.status === state.admin.status; return okQ && okS; });
+    var pages = Math.max(1, Math.ceil(filtered.length / state.admin.pageSize));
+    state.admin.page = Math.min(state.admin.page, pages);
+    var start = (state.admin.page - 1) * state.admin.pageSize, rows = filtered.slice(start, start + state.admin.pageSize);
+    var cols = adminColumns(key);
+    main.innerHTML = '<div class="admin-toolbar"><div class="searchbox"><input class="input" placeholder="ค้นหา..." value="' + esc(state.admin.search) + '" oninput="adminSearch(this.value)"><select class="select" style="max-width:160px" onchange="adminStatus(this.value)"><option value="all">ทุกสถานะ</option><option value="active" ' + (state.admin.status === 'active' ? 'selected' : '') + '>Active</option><option value="published" ' + (state.admin.status === 'published' ? 'selected' : '') + '>Published</option><option value="draft" ' + (state.admin.status === 'draft' ? 'selected' : '') + '>Draft</option><option value="inactive" ' + (state.admin.status === 'inactive' ? 'selected' : '') + '>Inactive</option></select></div><button class="btn btn-primary" onclick="openAdminForm(\'' + key + '\')"><i class="fa-solid fa-plus"></i> เพิ่มข้อมูล</button></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr>' + cols.map(function (c) { return '<th>' + esc(c.label) + '</th>'; }).join('') + '<th>จัดการ</th></tr></thead><tbody>' + (rows.length ? rows.map(function (r) { return '<tr>' + cols.map(function (c) { return '<td>' + formatCell(r, c.key) + '</td>'; }).join('') + '<td><div style="display:flex;gap:6px">' + (['news', 'activities', 'banners', 'popups'].includes(key) ? '<button class="btn btn-light btn-sm" onclick="adminPreview(\'' + key + '\',\'' + esc(r.id) + '\')" title="Preview"><i class="fa-solid fa-eye"></i></button>' : '') + '<button class="btn btn-light btn-sm" onclick="openAdminForm(\'' + key + '\',\'' + esc(r.id) + '\')"><i class="fa-solid fa-pen"></i></button><button class="btn btn-danger btn-sm" onclick="adminDelete(\'' + key + '\',\'' + esc(r.id) + '\')"><i class="fa-solid fa-trash"></i></button></div></td></tr>'; }).join('') : '<tr><td colspan="' + (cols.length + 1) + '" class="empty">ยังไม่มีข้อมูล</td></tr>') + '</tbody></table></div><div class="pagination">' + Array.from({ length: pages }, function (_, i) { return '<button class="btn ' + (i + 1 === state.admin.page ? 'btn-primary' : 'btn-light') + ' btn-sm" onclick="adminPage(' + (i + 1) + ')">' + (i + 1) + '</button>'; }).join('') + '</div>';
+}
+function adminColumns(k) { var map = { news: [['title', 'หัวข้อ'], ['category', 'หมวด'], ['publishDate', 'วันที่'], ['status', 'สถานะ']], activities: [['title', 'กิจกรรม'], ['date', 'วันที่'], ['location', 'สถานที่'], ['status', 'สถานะ']], banners: [['title', 'หัวข้อ'], ['order', 'ลำดับ'], ['startDate', 'เริ่ม'], ['endDate', 'สิ้นสุด'], ['status', 'สถานะ']], staff: [['firstname', 'ชื่อ'], ['lastname', 'นามสกุล'], ['position', 'ตำแหน่ง'], ['department', 'สาขาวิชา'], ['status', 'สถานะ']], awards: [['title', 'รางวัล'], ['recipient', 'ผู้ได้รับ'], ['level', 'ระดับ'], ['date', 'วันที่'], ['status', 'สถานะ']], documents: [['title', 'เอกสาร'], ['category', 'หมวด'], ['date', 'วันที่'], ['downloads', 'ดาวน์โหลด'], ['status', 'สถานะ']], calendar: [['title', 'กิจกรรม'], ['startDate', 'เริ่ม'], ['endDate', 'สิ้นสุด'], ['location', 'สถานที่'], ['status', 'สถานะ']], links: [['name', 'ชื่อ'], ['url', 'URL'], ['order', 'ลำดับ'], ['status', 'สถานะ']], popups: [['title', 'หัวข้อ'], ['startDate', 'เริ่ม'], ['endDate', 'สิ้นสุด'], ['status', 'สถานะ']] }; return (map[k] || []).map(function (_a) {
+    var _b = __read(_a, 2), key = _b[0], label = _b[1];
+    return ({ key: key, label: label });
+}); }
+function formatCell(r, k) { var v = r[k]; if (k === 'status') return '<span class="badge ' + esc(v) + '">' + esc(v || '-') + '</span>'; if (/Date|date/.test(k)) return fmtDate(v); if (k === 'url' || k === 'fileUrl') return v ? '<a href="' + esc(v) + '" target="_blank" style="color:var(--primary)">เปิดลิงก์</a>' : '-'; return esc(v == null || v === '' ? '-' : v).slice(0, 180); }
+function adminSearch(v) { state.admin.search = v; state.admin.page = 1; renderAdminTable(); }
+function adminStatus(v) { state.admin.status = v; state.admin.page = 1; renderAdminTable(); }
+function adminPage(n) { state.admin.page = n; renderAdminTable(); }
+function adminPreview(key, id) { var r = asArray(state.admin.rows).find(function (x) { return x.id === id; }); if (!r) return; var html = ''; if (key === 'news') html = (r.coverImage ? '<img src="' + esc(imageSrc(r.coverImage, 'PREVIEW')) + '" onerror="imgFallback(this,\'PREVIEW\')" style="width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:14px">' : '') + (r.content || esc(r.summary || ''));
+else if (key === 'activities') html = (r.coverImage ? '<img src="' + esc(imageSrc(r.coverImage, 'PREVIEW')) + '" onerror="imgFallback(this,\'PREVIEW\')" style="width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:14px">' : '') + '<p>' + esc(r.description || '') + '</p>';
+else if (key === 'banners') html = (r.image ? '<img src="' + esc(imageSrc(r.image, 'BANNER')) + '" onerror="imgFallback(this,\'BANNER\')" style="width:100%;border-radius:14px;margin-bottom:14px">' : '') + '<p>' + esc(r.description || '') + '</p>';
+else if (key === 'popups') html = (r.image ? '<img src="' + esc(imageSrc(r.image, 'PREVIEW')) + '" onerror="imgFallback(this,\'PREVIEW\')" style="width:100%;max-height:380px;object-fit:cover;border-radius:14px;margin-bottom:14px">' : '') + '<p>' + esc(r.description || '') + '</p>'; openDetail('Preview: ' + (r.title || r.name || ''), html); }
+function openAdminForm(key, id) { var m = MODULES[key], row = asArray(state.admin.rows).find(function (r) { return r.id === id; }) || {}; var fields = m.fields.map(function (_a) {
+    var _b = __read(_a, 4), name = _b[0], label = _b[1], type = _b[2], required = _b[3];
+    return fieldHtml(name, label, type, row[name], required, key);
+}).join(''); document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal modal-lg"><div class="modal-head"><h3 style="margin:0">' + (id ? 'แก้ไข' : 'เพิ่ม') + esc(m.title) + '</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><form class="modal-body" onsubmit="submitAdminForm(event,\'' + key + '\',\'' + esc(id || '') + '\')"><div class="form-grid">' + fields + '</div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px"><button type="button" class="btn btn-light" onclick="closeModal()">ยกเลิก</button><button class="btn btn-primary" id="saveFormBtn"><i class="fa-solid fa-floppy-disk"></i> บันทึก</button></div></form></div></div>'; if (m.fields.some(function (f) { return f[2] === 'rich'; })) setTimeout(function () { return initRichEditor(row.content || ''); }, 0); }
+function fieldHtml(name, label, type, value, required, key) { var req = required ? 'required' : '', v = value !== null && value !== void 0 ? value : ''; if (type === 'textarea') return '<div class="field full"><label>' + label + '</label><textarea class="textarea" name="' + name + '" ' + req + '>' + esc(v) + '</textarea></div>'; if (type === 'rich') return '<div class="field full"><label>' + label + '</label><input type="hidden" name="' + name + '" id="richValue"><div class="editor-toolbar"><button type="button" class="btn btn-light btn-sm" onclick="richBlock(\'h2\')">H2</button><button type="button" class="btn btn-light btn-sm" onclick="richBlock(\'p\')">P</button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'bold\')"><b>B</b></button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'italic\')"><i>I</i></button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'underline\')"><u>U</u></button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'insertUnorderedList\')">• List</button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'insertOrderedList\')">1. List</button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'justifyLeft\')"><i class="fa-solid fa-align-left"></i></button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'justifyCenter\')"><i class="fa-solid fa-align-center"></i></button><button type="button" class="btn btn-light btn-sm" onclick="richCmd(\'justifyRight\')"><i class="fa-solid fa-align-right"></i></button><button type="button" class="btn btn-light btn-sm" onclick="richLink()"><i class="fa-solid fa-link"></i></button><button type="button" class="btn btn-light btn-sm" onclick="richImage()"><i class="fa-solid fa-image"></i></button></div><div class="editor" id="richEditor" contenteditable="true">' + esc(v) + '</div></div>'; if (type === 'checkbox') return '<div class="field"><label>' + label + '</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" name="' + name + '" ' + (v ? 'checked' : '') + '> เปิดใช้งาน</label></div>'; if (type === 'status') return '<div class="field"><label>' + label + '</label><select class="select" name="' + name + '"><option value="active" ' + (v === 'active' || !v ? 'selected' : '') + '>active</option><option value="published" ' + (v === 'published' ? 'selected' : '') + '>published</option><option value="draft" ' + (v === 'draft' ? 'selected' : '') + '>draft</option><option value="inactive" ' + (v === 'inactive' ? 'selected' : '') + '>inactive</option></select></div>'; if (type.startsWith('select:')) {
+    var opts = type.slice(7).split('|');
+    return '<div class="field"><label>' + label + '</label><select class="select" name="' + name + '">' + opts.map(function (o) { return '<option ' + (String(v) === o ? 'selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select></div>';
+} if (type === 'upload' || type === 'uploadfile') return '<div class="field full"><label>' + label + '</label><div style="display:grid;grid-template-columns:1fr auto;gap:8px"><input class="input" name="' + name + '" id="field-' + name + '" value="' + esc(v) + '" placeholder="https://..."><label class="btn btn-light" style="cursor:pointer"><i class="fa-solid fa-upload"></i> อัปโหลด<input type="file" hidden onchange="uploadFromForm(this,\'' + key + '\',\'' + name + '\',\'' + type + '\')"></label></div></div>'; return '<div class="field"><label>' + label + (required ? ' *' : '') + '</label><input class="input" name="' + name + '" type="' + (type === 'number' ? 'number' : type === 'date' ? 'date' : type === 'color' ? 'color' : 'text') + '" value="' + esc(normalizeInputDate(type, v)) + '" ' + req + '></div>'; }
+function normalizeInputDate(type, v) { if (type !== 'date' || !v) return v || ''; return String(v).slice(0, 10); }
+function initRichEditor(html) { var e = document.getElementById('richEditor'); if (e) e.innerHTML = html || ''; }
+function richCmd(cmd) { document.execCommand(cmd, false, null); }
+function richBlock(tag) { document.execCommand('formatBlock', false, tag); }
+function richLink() { var u = prompt('URL'); if (u && /^https?:\/\//i.test(u)) document.execCommand('createLink', false, u); }
+function richImage() { var u = prompt('URL รูปภาพ'); if (u && /^https?:\/\//i.test(u)) document.execCommand('insertImage', false, imageSrc(u, 'IMAGE')); }
+function uploadFromForm(input, key, field, type) {
+    return __awaiter(this, void 0, void 0, function () { var file, base64, r, target, form, name_1, ft, fs, e_7; var _a, _b; return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                file = (_a = input.files) === null || _a === void 0 ? void 0 : _a[0];
+                if (!file) return [2 /*return*/];
+                if (file.size > 10 * 1024 * 1024) {
+                    notify('error', 'ไฟล์ใหญ่เกินไป', 'รองรับไม่เกิน 10 MB');
+                    return [2 /*return*/];
+                }
+                _c.label = 1;
+            case 1:
+                _c.trys.push([1, 4, 5, 6]);
+                input.disabled = true;
+                loading('กำลังอัปโหลดไฟล์...');
+                return [4 /*yield*/, fileToBase64(file)];
+            case 2:
+                base64 = _c.sent();
+                return [4 /*yield*/, api('uploadFile', { name: file.name, mimeType: file.type, base64: base64 }, MODULES[key].folder, state.admin.token)];
+            case 3:
+                r = _c.sent();
+                Swal.close();
+                target = document.getElementById('field-' + field);
+                if (target) target.value = type === 'uploadfile' ? r.downloadUrl : r.url;
+                if (type === 'uploadfile') {
+                    form = target.closest('form');
+                    name_1 = form.querySelector('[name="fileName"]');
+                    ft = form.querySelector('[name="fileType"]');
+                    fs = form.querySelector('[name="fileSize"]');
+                    if (name_1) name_1.value = r.name;
+                    if (ft) ft.value = ((_b = file.name.split('.').pop()) === null || _b === void 0 ? void 0 : _b.toUpperCase()) || file.type;
+                    if (fs) fs.value = formatBytes(r.size);
+                }
+                toast('success', 'อัปโหลดเรียบร้อย');
+                return [3 /*break*/, 6];
+            case 4:
+                e_7 = _c.sent();
+                Swal.close();
+                notify('error', 'อัปโหลดไม่สำเร็จ', e_7.message);
+                return [3 /*break*/, 6];
+            case 5:
+                input.disabled = false;
+                return [7 /*endfinally*/];
+            case 6: return [2 /*return*/];
+        }
+    }); });
+}
+function fileToBase64(file) { return new Promise(function (res, rej) { var r = new FileReader(); r.onload = function () { return res(String(r.result).split(',')[1]); }; r.onerror = rej; r.readAsDataURL(file); }); }
+function formatBytes(n) { if (!n) return '0 B'; var u = ['B', 'KB', 'MB', 'GB']; var i = 0; while (n >= 1024 && i < u.length - 1) { n /= 1024; i++; } return n.toFixed(i ? 1 : 0) + ' ' + u[i]; }
+function submitAdminForm(e, key, id) {
+    return __awaiter(this, void 0, void 0, function () { var btn, fd, obj_1, editor, err_2; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                btn = document.getElementById('saveFormBtn');
+                btn.disabled = true;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 4, 5, 6]);
+                fd = new FormData(e.target), obj_1 = Object.fromEntries(fd.entries());
+                if (id) obj_1.id = id;
+                MODULES[key].fields.filter(function (f) { return f[2] === 'checkbox'; }).forEach(function (f) { var _a; return obj_1[f[0]] = ((_a = e.target.elements[f[0]]) === null || _a === void 0 ? void 0 : _a.checked) || false; });
+                editor = document.getElementById('richEditor');
+                if (editor) obj_1.content = editor.innerHTML;
+                loading('กำลังบันทึกข้อมูล...');
+                return [4 /*yield*/, api(MODULES[key].save, obj_1, state.admin.token)];
+            case 2:
+                _a.sent();
+                Swal.close();
+                closeModal();
+                toast('success', 'บันทึกข้อมูลเรียบร้อย');
+                return [4 /*yield*/, adminModule(key)];
+            case 3:
+                _a.sent();
+                loadPublic().catch(function () { });
+                return [3 /*break*/, 6];
+            case 4:
+                err_2 = _a.sent();
+                Swal.close();
+                notify('error', 'บันทึกไม่สำเร็จ', err_2.message);
+                return [3 /*break*/, 6];
+            case 5:
+                if (btn) btn.disabled = false;
+                return [7 /*endfinally*/];
+            case 6: return [2 /*return*/];
+        }
+    }); });
+}
+function adminDelete(key, id) {
+    return __awaiter(this, void 0, void 0, function () { var c, e_8; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Swal.fire({ icon: 'warning', title: 'คุณต้องการลบข้อมูลนี้หรือไม่?', showCancelButton: true, confirmButtonText: 'ลบ', cancelButtonText: 'ยกเลิก', confirmButtonColor: '#dc2626' })];
+            case 1:
+                c = _a.sent();
+                if (!c.isConfirmed) return [2 /*return*/];
+                _a.label = 2;
+            case 2:
+                _a.trys.push([2, 5, , 6]);
+                loading('กำลังลบ...');
+                return [4 /*yield*/, api(MODULES[key].del, id, state.admin.token)];
+            case 3:
+                _a.sent();
+                Swal.close();
+                toast('success', 'ลบข้อมูลเรียบร้อย');
+                return [4 /*yield*/, adminModule(key)];
+            case 4:
+                _a.sent();
+                loadPublic().catch(function () { });
+                return [3 /*break*/, 6];
+            case 5:
+                e_8 = _a.sent();
+                Swal.close();
+                notify('error', 'ลบไม่สำเร็จ', e_8.message);
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
+        }
+    }); });
+}
+function settingsFieldHtml(field, settings) {
+    var k = field[0], l = field[1], t = field[2], label = field[3] || 'IMAGE';
+    var value = settings && settings[k] ? settings[k] : '';
+    if (t === 'textarea') {
+        return '<div class="field full"><label>' + esc(l) + '</label><textarea class="textarea" name="' + esc(k) + '">' + esc(value) + '</textarea></div>';
+    }
+    if (t === 'imageurl') {
+        var previewSrc = imageSrc(value, label);
+        return '<div class="field full"><label>' + esc(l) + '</label>' +
+            '<div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center">' +
+            '<input class="input" id="setting-' + esc(k) + '" name="' + esc(k) + '" type="text" value="' + esc(value) + '" placeholder="วาง URL รูปภาพ หรือกดอัปโหลดรูป">' +
+            '<label class="btn btn-light" style="cursor:pointer;white-space:nowrap"><i class="fa-solid fa-upload"></i> อัปโหลดรูป' +
+            '<input type="file" hidden accept="image/png,image/jpeg,image/webp,image/gif,image/x-icon,image/vnd.microsoft.icon" onchange="uploadSettingsImage(this,\'' + esc(k) + '\',\'' + esc(label) + '\')"></label>' +
+            '</div>' +
+            '<div style="margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">' +
+            '<img id="setting-preview-' + esc(k) + '" src="' + esc(previewSrc) + '" alt="ตัวอย่าง ' + esc(l) + '" onerror="imgFallback(this,\'' + esc(label) + '\')" style="width:120px;height:80px;object-fit:contain;border:1px solid var(--border);border-radius:12px;background:var(--surface2)">' +
+            '<small class="muted">รองรับ JPG, PNG, WebP, GIF และไอคอน ขนาดไม่เกิน 10 MB<br>อัปโหลดแล้วกรุณากด <b>บันทึกการตั้งค่า</b></small>' +
+            '</div></div>';
+    }
+    return '<div class="field"><label>' + esc(l) + '</label><input class="input" type="' + (t === 'color' ? 'color' : 'text') + '" name="' + esc(k) + '" value="' + esc(value || (t === 'color' ? '#2563eb' : '')) + '"></div>';
+}
+function uploadSettingsImage(input, field, label) {
+    var file = input && input.files ? input.files[0] : null;
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) {
+        notify('error', 'ไฟล์ใหญ่เกินไป', 'รองรับรูปภาพขนาดไม่เกิน 10 MB');
+        input.value = '';
+        return;
+    }
+    var mime = file.type || '';
+    if (!/^image\//i.test(mime)) {
+        notify('error', 'ชนิดไฟล์ไม่ถูกต้อง', 'กรุณาเลือกไฟล์รูปภาพ JPG, PNG, WebP, GIF หรือ Icon');
+        input.value = '';
+        return;
+    }
+    input.disabled = true;
+    loading('กำลังอัปโหลดรูป...');
+    fileToBase64(file).then(function(base64) {
+        return api('uploadFile', {name:file.name, mimeType:mime, base64:base64}, 'Website', state.admin.token);
+    }).then(function(r) {
+        Swal.close();
+        var target = document.getElementById('setting-' + field);
+        if (target) target.value = r.url || '';
+        var preview = document.getElementById('setting-preview-' + field);
+        if (preview) {
+            preview.onerror = function() { imgFallback(preview, label); };
+            preview.src = imageSrc(r.url || '', label);
+        }
+        toast('success', 'อัปโหลดรูปเรียบร้อย กรุณากดบันทึกการตั้งค่า');
+        input.disabled = false;
+        input.value = '';
+    }, function(e) {
+        Swal.close();
+        notify('error', 'อัปโหลดรูปไม่สำเร็จ', e && e.message ? e.message : String(e));
+        input.disabled = false;
+        input.value = '';
+    });
+}
+function adminSettings() {
+    return __awaiter(this, void 0, void 0, function () { var main, s_1, fields, e_9; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                markMenu('settings');
+                setText('adminPageTitle', 'ตั้งค่าเว็บไซต์');
+                main = document.getElementById('adminMain');
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, api('getSettings')];
+            case 2:
+                s_1 = _a.sent();
+                fields = [
+                    ['schoolName', 'ชื่อคณะวิทยาศาสตร์การกีฬา'], ['schoolNameEn', 'ชื่อภาษาอังกฤษ'], ['affiliation', 'สังกัด'], ['shortInfo', 'ข้อมูลย่อ'],
+                    ['logo', 'Logo URL / อัปโหลดรูป', 'imageurl', 'LOGO'],
+                    ['favicon', 'Favicon URL / อัปโหลดรูป', 'imageurl', 'ICON'],
+                    ['schoolImage', 'รูปคณะฯ URL / อัปโหลดรูป', 'imageurl', 'FACULTY'],
+                    ['history', 'ประวัติคณะฯ', 'textarea'], ['philosophy', 'ปรัชญา'], ['motto', 'คำขวัญ'], ['vision', 'วิสัยทัศน์', 'textarea'], ['mission', 'พันธกิจ', 'textarea'], ['identity', 'อัตลักษณ์'], ['uniqueness', 'เอกลักษณ์'], ['schoolColors', 'สีประจำคณะ'], ['address', 'ที่อยู่'], ['subdistrict', 'ตำบล'], ['district', 'อำเภอ'], ['province', 'จังหวัด'], ['postcode', 'รหัสไปรษณีย์'], ['phone', 'โทรศัพท์'], ['email', 'Email'], ['facebook', 'Facebook URL'], ['youtube', 'YouTube URL'], ['tiktok', 'TikTok URL'], ['line', 'LINE URL'], ['instagram', 'Instagram URL'], ['googleMaps', 'Google Maps Embed URL / iframe'], ['messenger', 'Messenger URL'], ['studentCount', 'จำนวนนักศึกษา'], ['staffCount', 'จำนวนคณาจารย์และบุคลากร'], ['classroomCount', 'จำนวนหลักสูตร'], ['gradeCount', 'จำนวนชั้นปี'], ['primaryColor', 'Primary Color', 'color'], ['secondaryColor', 'Secondary Color', 'color'], ['accentColor', 'Accent Color', 'color'], ['footerText', 'Footer Text', 'textarea'], ['seoTitle', 'SEO Title'], ['seoDescription', 'SEO Description', 'textarea'], ['seoKeywords', 'SEO Keywords']
+                ];
+                main.innerHTML = '<form class="card card-body" onsubmit="saveAdminSettings(event)"><div class="form-grid">' + fields.map(function(f) { return settingsFieldHtml(f, s_1); }).join('') + '</div><div style="margin-top:18px"><button class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> บันทึกการตั้งค่า</button></div></form>';
+                return [3 /*break*/, 4];
+            case 3:
+                e_9 = _a.sent();
+                main.innerHTML = emptyHtml(e_9.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function saveAdminSettings(e) {
+    return __awaiter(this, void 0, void 0, function () { var obj, err_3; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 4, , 5]);
+                loading('กำลังบันทึกการตั้งค่า...');
+                obj = Object.fromEntries(new FormData(e.target).entries());
+                return [4 /*yield*/, api('saveSettings', obj, state.admin.token)];
+            case 2:
+                _a.sent();
+                Swal.close();
+                toast('success', 'บันทึกการตั้งค่าแล้ว');
+                return [4 /*yield*/, loadPublic()];
+            case 3:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 4:
+                err_3 = _a.sent();
+                Swal.close();
+                notify('error', 'บันทึกไม่สำเร็จ', err_3.message);
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    }); });
+}
+function adminUsers() {
+    return __awaiter(this, void 0, void 0, function () { var main, rows, _a, e_10; return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                markMenu('users');
+                setText('adminPageTitle', 'ผู้ใช้งาน');
+                main = document.getElementById('adminMain');
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 3, , 4]);
+                _a = asArray;
+                return [4 /*yield*/, api('getUsers', state.admin.token)];
+            case 2:
+                rows = _a.apply(void 0, [_b.sent()]);
+                state.admin.users = rows;
+                main.innerHTML = '<div class="admin-toolbar"><div></div><button class="btn btn-primary" onclick="openUserForm()"><i class="fa-solid fa-user-plus"></i> เพิ่มผู้ใช้</button></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Username</th><th>ชื่อ</th><th>Role</th><th>สถานะ</th><th>บังคับเปลี่ยนรหัส</th><th>จัดการ</th></tr></thead><tbody>' + rows.map(function (r) { return '<tr><td>' + esc(r.username) + '</td><td>' + esc(r.name) + '</td><td>' + esc(r.role) + '</td><td><span class="badge ' + esc(r.status) + '">' + esc(r.status) + '</span></td><td>' + (r.mustChangePassword ? 'ใช่' : 'ไม่') + '</td><td><button class="btn btn-light btn-sm" onclick="openUserForm(\'' + esc(r.id) + '\')"><i class="fa-solid fa-pen"></i></button> <button class="btn btn-danger btn-sm" onclick="deleteUserAdmin(\'' + esc(r.id) + '\')"><i class="fa-solid fa-trash"></i></button></td></tr>'; }).join('') + '</tbody></table></div>';
+                return [3 /*break*/, 4];
+            case 3:
+                e_10 = _b.sent();
+                main.innerHTML = emptyHtml(e_10.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function openUserForm(id) { var r = (state.admin.users || []).find(function (x) { return x.id === id; }) || {}; document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h3>' + (id ? 'แก้ไข' : 'เพิ่ม') + 'ผู้ใช้</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><form class="modal-body" onsubmit="saveUserAdmin(event,\'' + esc(id || '') + '\')"><div class="form-grid"><div class="field"><label>Username</label><input class="input" name="username" value="' + esc(r.username || '') + '" required></div><div class="field"><label>ชื่อ</label><input class="input" name="name" value="' + esc(r.name || '') + '" required></div><div class="field"><label>Role</label><select class="select" name="role">' + ['Super Admin', 'Admin', 'Editor'].map(function (x) { return '<option ' + (r.role === x ? 'selected' : '') + '>' + x + '</option>'; }).join('') + '</select></div><div class="field"><label>สถานะ</label><select class="select" name="status"><option value="active" ' + (r.status !== 'inactive' ? 'selected' : '') + '>active</option><option value="inactive" ' + (r.status === 'inactive' ? 'selected' : '') + '>inactive</option></select></div><div class="field full"><label>Password ' + (id ? '(เว้นว่างหากไม่เปลี่ยน)' : '') + '</label><input class="input" type="password" name="password" ' + (id ? '' : 'required') + ' minlength="6"></div><div class="field"><label><input type="checkbox" name="mustChangePassword" ' + (r.mustChangePassword ? 'checked' : '') + '> บังคับเปลี่ยนรหัสผ่าน</label></div></div><button class="btn btn-primary" style="margin-top:16px">บันทึก</button></form></div></div>'; }
+function saveUserAdmin(e, id) {
+    return __awaiter(this, void 0, void 0, function () { var f, obj, err_4; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                f = e.target, obj = Object.fromEntries(new FormData(f).entries());
+                obj.mustChangePassword = f.elements.mustChangePassword.checked;
+                if (id) obj.id = id;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                loading('กำลังบันทึก...');
+                return [4 /*yield*/, api('saveUser', obj, state.admin.token)];
+            case 2:
+                _a.sent();
+                Swal.close();
+                closeModal();
+                toast('success', 'บันทึกผู้ใช้แล้ว');
+                adminUsers();
+                return [3 /*break*/, 4];
+            case 3:
+                err_4 = _a.sent();
+                Swal.close();
+                notify('error', 'บันทึกไม่สำเร็จ', err_4.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function deleteUserAdmin(id) {
+    return __awaiter(this, void 0, void 0, function () { var c, e_11; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Swal.fire({ icon: 'warning', title: 'ลบผู้ใช้นี้?', showCancelButton: true, confirmButtonText: 'ลบ', confirmButtonColor: '#dc2626' })];
+            case 1:
+                c = _a.sent();
+                if (!c.isConfirmed) return [2 /*return*/];
+                _a.label = 2;
+            case 2:
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, api('deleteUser', id, state.admin.token)];
+            case 3:
+                _a.sent();
+                toast('success', 'ลบแล้ว');
+                adminUsers();
+                return [3 /*break*/, 5];
+            case 4:
+                e_11 = _a.sent();
+                notify('error', 'ลบไม่สำเร็จ', e_11.message);
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    }); });
+}
+function adminLogs() {
+    return __awaiter(this, void 0, void 0, function () { var main, rows, _a, e_12; return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                markMenu('logs');
+                setText('adminPageTitle', 'Logs');
+                main = document.getElementById('adminMain');
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 3, , 4]);
+                _a = asArray;
+                return [4 /*yield*/, api('getLogs', state.admin.token)];
+            case 2:
+                rows = _a.apply(void 0, [_b.sent()]);
+                main.innerHTML = '<div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>เวลา</th><th>ผู้ใช้</th><th>Action</th><th>Module</th><th>รายละเอียด</th></tr></thead><tbody>' + rows.map(function (r) { return '<tr><td>' + fmtDateTime(r.timestamp) + '</td><td>' + esc(r.username) + '</td><td>' + esc(r.action) + '</td><td>' + esc(r.module) + '</td><td>' + esc(r.detail) + '</td></tr>'; }).join('') + '</tbody></table></div>';
+                return [3 /*break*/, 4];
+            case 3:
+                e_12 = _b.sent();
+                main.innerHTML = emptyHtml(e_12.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+function fmtDateTime(v) { if (!v) return '-'; var d = new Date(v); return isNaN(d) ? esc(v) : d.toLocaleString('th-TH'); }
+function adminBackup() { markMenu('backup'); setText('adminPageTitle', 'Backup'); document.getElementById('adminMain').innerHTML = '<div class="card card-body"><h3>สำรองข้อมูล Google Sheets</h3><p class="muted">ระบบจะสร้างสำเนา Spreadsheet ไปยังโฟลเดอร์ Backup ภายใต้ Root Folder ที่กำหนดใน Server Configuration</p><button class="btn btn-primary" onclick="runBackup()"><i class="fa-solid fa-database"></i> สร้าง Backup ตอนนี้</button></div>'; }
+function runBackup() {
+    return __awaiter(this, void 0, void 0, function () { var r, e_15; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                loading('กำลังสร้าง Backup...');
+                return [4 /*yield*/, api('createBackup', state.admin.token)];
+            case 1:
+                r = _a.sent();
+                Swal.close();
+                Swal.fire({ icon: 'success', title: 'สำรองข้อมูลสำเร็จ', html: '<b>' + esc(r.name) + '</b><br><br><a class="btn btn-primary" href="' + esc(r.url) + '" target="_blank">เปิดไฟล์ Backup</a>' });
+                return [3 /*break*/, 3];
+            case 2:
+                e_15 = _a.sent();
+                Swal.close();
+                notify('error', 'Backup ไม่สำเร็จ', e_15.message);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    }); });
+}
+function openChangePassword() { document.getElementById('modalRoot').innerHTML = '<div class="modal-backdrop"><div class="modal" style="max-width:460px"><div class="modal-head"><h3>เปลี่ยนรหัสผ่าน</h3><button class="close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button></div><form class="modal-body" onsubmit="submitChangePassword(event)"><div class="field"><label>รหัสผ่านปัจจุบัน</label><input class="input" type="password" name="current" required></div><div class="field" style="margin-top:12px"><label>รหัสผ่านใหม่</label><input class="input" type="password" name="next" minlength="6" required></div><button class="btn btn-primary" style="margin-top:16px">เปลี่ยนรหัสผ่าน</button></form></div></div>'; }
+function submitChangePassword(e) {
+    return __awaiter(this, void 0, void 0, function () { var f, err_5; return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                e.preventDefault();
+                f = e.target;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                loading('กำลังเปลี่ยนรหัสผ่าน...');
+                return [4 /*yield*/, api('changePassword', f.current.value, f.next.value, state.admin.token)];
+            case 2:
+                _a.sent();
+                Swal.close();
+                closeModal();
+                toast('success', 'เปลี่ยนรหัสผ่านสำเร็จ');
+                return [3 /*break*/, 4];
+            case 3:
+                err_5 = _a.sent();
+                Swal.close();
+                notify('error', 'เปลี่ยนไม่สำเร็จ', err_5.message);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    }); });
+}
+  </script>
 </body>
 </html>
